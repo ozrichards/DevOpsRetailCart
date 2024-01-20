@@ -31,6 +31,7 @@ pipeline {
                 // Create Dockerfile
                 sh 'cd /home/ec2-user'
                 sh 'rm -rf project'
+                sh 'mkdir project'
                 sh 'cd project'
                 sh 'cp "/tmp/jenkinsdir/workspace/Build Pipeline Industry Grade Project 1/target/ABCtechnologies-1.0.war" .'
 
