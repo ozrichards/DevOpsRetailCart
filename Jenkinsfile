@@ -36,13 +36,10 @@ pipeline {
 
                 
                 // Create Dockerfile
-                script {
-                    def dockerfileContent = """
-                        FROM tomcat:9.0.85-jdk8-corretto-al2
-                        ADD . /usr/local/tomcat/webapps   
-                    """
-                    writeFile file: 'Dockerfile', text: dockerfileContent
-                }
+                sh 'echo "FROM tomcat:9.0.85-jdk8-corretto-al2" > Dockerfile'
+                sh 'echo "ADD . /usr/local/tomcat/webapps" >> Dockerfile'   
+                 
+                
                 // Build Docker image
                 sh 'docker build -t retailcart .'
                 
