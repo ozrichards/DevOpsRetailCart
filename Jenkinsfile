@@ -28,7 +28,7 @@ pipeline {
                 sh 'mvn package'
 
                    
-                // Create Dockerfile
+                // setup project 
                 sh 'cd /home/ec2-user'
                 sh 'rm -rf project'
                 sh 'mkdir project'
@@ -36,11 +36,12 @@ pipeline {
                 sh 'cp "/tmp/jenkinsdir/workspace/Build Pipeline Industry Grade Project 1/target/ABCtechnologies-1.0.war" .'
 
                 
-                // Create Dockerfile
-                sh 'echo "FROM tomcat:9.0.85-jdk8-corretto-al2" > Dockerfile'
-                sh 'echo "ADD . /usr/local/tomcat/webapps" >> Dockerfile'   
-                 
-                
+                // Create a Dockerfile
+                writeFile file: 'Dockerfile', text: '''
+                    FROM tomcat:9.0.85-jdk8-corretto-al2
+                    ADD . /usr/local/tomcat/webapps
+                '''
+           
                 // Build Docker image
                 sh 'docker build -t retailcart .'
                 
