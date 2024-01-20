@@ -44,7 +44,11 @@ pipeline {
            
                 // Build Docker image
                 sh 'docker build -t retailcart .'
-                
+
+                // Docker login
+                withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_CREDENTIALS', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                }
                 // Tag Docker image
                 sh 'docker tag retailcart richardtest123/reatilcart:latest'
                 
