@@ -29,17 +29,18 @@ pipeline {
 
                    
                 // setup project 
-                sh 'cd /home/ec2-user'
-                sh 'rm -rf project'
-                sh 'mkdir projects'
-                sh 'cd projects && cp "/tmp/jenkinsdir/workspace/Build Pipeline Industry Grade Project 1/target/ABCtechnologies-1.0.war" .'
+                sh 'cd /home/ec2-user'         
+                sh 'cp "/tmp/jenkinsdir/workspace/Build Pipeline Industry Grade Project 1/target/ABCtechnologies-1.0.war" .'
 
                 
                 // Create a Dockerfile
-                sh 'cd projects && echo "FROM tomcat:9.0.85-jdk8-corretto-al2" > Dockerfile'
-                sh 'cd projects && echo "ADD . /usr/local/tomcat/webapps" >> Dockerfile' 
-             
-           
+                sh 'rm -rf Dockerfile'
+                writeFile file: 'Dockerfile', text: '''
+                    FROM tomcat:9.0.85-jdk8-corretto-al2
+                    ADD . /usr/local/tomcat/webapps
+                '''
+          
+     
                 // Build Docker image
                 sh 'docker build -t retailcart .'
 
