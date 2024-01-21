@@ -49,10 +49,10 @@ pipeline {
                     sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
                 }
                 // Tag Docker image
-                sh 'docker tag retailcart richardtest123/reatilcart:latest'
+                sh 'docker tag retailcart richardtest123/retailcart:latest'
                 
                 // Push Docker image
-                sh 'docker push richardtest123/reatilcart:latest'
+                sh 'docker push richardtest123/retailcart:latest'
             }
             post {
                 success {
