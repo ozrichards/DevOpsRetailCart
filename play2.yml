@@ -1,5 +1,5 @@
 - hosts: localhost
-  become: yes
+  #become: yes
   tasks:
         - name: Deploy K8S Service
           k8s:
