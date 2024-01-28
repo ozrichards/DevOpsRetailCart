@@ -61,6 +61,7 @@ pipeline {
             agent { label 'master' }
             steps {
                 // Invoke Ansible Playbook
+                sh 'ls -lrta'
                
                 sh 'ansible-playbook play2.yml -f 2'
               
