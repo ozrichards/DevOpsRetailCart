@@ -58,7 +58,7 @@ pipeline {
         }
 
         stage('ansible') {
-            agent { label 'Built-In Node' }
+            agent { label 'Built-In' }
             steps {
                 // Invoke Ansible Playbook
                
