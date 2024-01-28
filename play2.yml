@@ -1,0 +1,14 @@
+- hosts: localhost
+  become: yes
+  tasks:
+        - name: Deploy K8S Service
+          k8s:
+            state: present
+            namespace: default
+            src: /root/service.yml
+
+        - name: Project
+          k8s:
+            state: present
+            namespace: default
+            src: /root/deployment.yml
