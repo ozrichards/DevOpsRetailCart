@@ -1,6 +1,13 @@
 - hosts: localhost
   #become: yes
   tasks:
+        - name: install pre-requisites
+          pip:
+            name:
+               - openshift
+               - pyyaml
+               - kubernetes 
+  
         - name: Deploy K8S Service
           k8s:
             state: present
