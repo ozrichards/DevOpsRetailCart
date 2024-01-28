@@ -55,6 +55,7 @@ pipeline {
                 sh 'docker push richardtest123/retailcart:latest'
 
             }
+        }
 
         stage('ansible') {
             agent { label 'Built-In Node' }
