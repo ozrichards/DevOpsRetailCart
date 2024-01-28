@@ -7,7 +7,7 @@
                - openshift
                - pyyaml
                - kubernetes 
-               - urllib3==1.25.11
+               - urllib3==1.26.6
   
         - name: Deploy K8S Service
           k8s:
