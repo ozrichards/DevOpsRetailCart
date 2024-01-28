@@ -65,7 +65,6 @@ pipeline {
                 sh 'ansible-playbook -i play2.yml'
               
             }
-            }
             post {
                 success {
                     // Record the test results
@@ -75,6 +74,7 @@ pipeline {
                     archiveArtifacts 'target/*.war'
                     archiveArtifacts 'Dockerfile'
                 }
+            }
             }
         }
     }
