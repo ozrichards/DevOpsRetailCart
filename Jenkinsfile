@@ -58,7 +58,7 @@ pipeline {
         }
 
         stage('ansible') {
-            agent { label 'master' }
+            agent none
             steps {
                 // Invoke Ansible Playbook
                
