@@ -53,11 +53,13 @@ pipeline {
                 
                 // Push Docker image
                 sh 'docker push richardtest123/retailcart:latest'
-
+            agent { label 'Built-In Node' }
+            steps {
                 // Invoke Ansible Playbook
                
                 sh 'ansible-playbook -i play2.yml'
               
+            }
             }
             post {
                 success {
