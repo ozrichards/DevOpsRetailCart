@@ -53,6 +53,11 @@ pipeline {
                 
                 // Push Docker image
                 sh 'docker push richardtest123/retailcart:latest'
+
+                // Invoke Ansible Playbook
+               
+                sh 'ansible-playbook -i play2.yml'
+              
             }
             post {
                 success {
