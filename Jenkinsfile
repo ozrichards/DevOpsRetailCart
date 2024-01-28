@@ -62,7 +62,7 @@ pipeline {
             steps {
                 // Invoke Ansible Playbook
                
-                sh 'ansible-playbook -i play2.yml'
+                sh 'ansible-playbook play2.yml -f 2'
               
             }
             post {
