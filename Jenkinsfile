@@ -55,6 +55,16 @@ pipeline {
                 sh 'docker push richardtest123/retailcart:latest'
 
             }
+            post {
+                success {
+                    // Record the test results
+                    junit '**/target/surefire-reports/TEST-*.xml'
+
+                    // Archive the jar and Dockerfile
+                    archiveArtifacts 'target/*.war'
+                    archiveArtifacts 'Dockerfile'
+                }
+            }
         }
 
         stage('ansible') {
@@ -66,16 +76,7 @@ pipeline {
                 sh 'ansible-playbook play2.yml -vvv'
               
             }
-            post {
-                success {
-                    // Record the test results
-                    junit '**/target/surefire-reports/TEST-*.xml'
-
-                    // Archive the jar and Dockerfile
-                    archiveArtifacts 'target/*.war'
-                    archiveArtifacts 'Dockerfile'
-                }
-            }
+       
             }
         }
     }
