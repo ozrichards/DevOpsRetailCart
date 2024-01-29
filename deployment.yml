@@ -1,0 +1,17 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+    name: abctechnologies-dep1
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            type: webserver
+    template:
+        metadata:
+            labels:
+                type: webserver
+        spec:
+            containers:
+                - image: richardtest123/retailcart
+                  name: appc1
