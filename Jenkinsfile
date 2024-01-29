@@ -73,7 +73,7 @@ pipeline {
                 // Invoke Ansible Playbook
                 sh 'ls -lrta'
                
-                sh 'ansible-playbook play2.yml -vvv'
+                sh 'ansible-playbook play2.yml'
               
             }
        
