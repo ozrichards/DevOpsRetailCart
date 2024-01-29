@@ -14,9 +14,11 @@
             state: present
             namespace: default
             src: service.yml
+            kubeconfig: /home/ec2-user/.kube/config
 
         - name: Project
           k8s:
             state: present
             namespace: default
             src: deployment.yml
+            kubeconfig: /home/ec2-user/.kube/config
