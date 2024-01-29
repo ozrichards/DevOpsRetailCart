@@ -15,11 +15,11 @@
             state: present
             namespace: default
             src: service.yml
-            kubeconfig: .kube/config
+            kubeconfig: /var/lib/jenkins/.kube/config
 
         - name: Project
           k8s:
             state: present
             namespace: default
             src: deployment.yml
-            kubeconfig: .kube/config
+            kubeconfig: /var/lib/jenkins/.kube/config
